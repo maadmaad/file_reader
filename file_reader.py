@@ -3,8 +3,8 @@ import sys
 import glob
 
 def usage():
-    print("Usage:\t./fmt_reader.py directory_name")
-    print("or\tpython fm_reader.py directory_name")
+    print("Usage:\t\t./fmt_reader.py file_extension directory_name")
+    print("example:\t./fm_reader.py .txt /home/user/my_dir/")
 
 def check_arguments():
     if len(sys.argv) < 3 or sys.argv[1][0] != '.':
@@ -17,7 +17,7 @@ def print_files(file_extension, directory):
 
     for file_path in glob.iglob(directory + '/**/*' + file_extension, recursive=True):
         try:
-            with (open(file_path, 'r')) as file:
+            with open(file_path, 'r') as file:
                 print("\n" + file_path + " :")
                 for line in file:
                     print(line, end='')
